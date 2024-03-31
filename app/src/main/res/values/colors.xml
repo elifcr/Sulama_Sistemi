@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="background">#093731</color>
+    <color name="button">#189877</color>
+    <color name="girisYap">#000000</color>
+    <color name="giris">#090A0A</color>
+    <color name="text">#979C9E</color>
+    <color name="description">#72777A</color>
+
+</resources>

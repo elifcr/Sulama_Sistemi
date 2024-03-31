@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "961007691024",
+    "project_id": "sulama-sistemi-a9009",
+    "storage_bucket": "sulama-sistemi-a9009.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961007691024:android:9a8249ad9069c3ffa93195",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn7eqATcLafflANPBOEuauEoZvlojDy9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
