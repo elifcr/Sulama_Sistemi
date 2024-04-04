@@ -3,8 +3,239 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="375dp"
+    android:layout_height="804dp"
+    android:background="@color/white"
     tools:context=".SinginActivity">
+
+    <RelativeLayout
+        android:id="@+id/frame_2"
+        android:layout_width="327dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/katiyOl"
+            android:layout_width="122dp"
+            android:layout_height="42dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/kayit_ol"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/KayitText"
+            android:layout_width="327dp"
+            android:layout_height="38dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="54dp"
+            android:layout_marginBottom="0dp"
+            android:text="Lorem ipsum dolor sit amet consectetur.
+            Eget vitae ut tellus mi. "
+            android:textColor="@color/text"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fieldBilgi"
+        android:layout_width="327dp"
+        android:layout_height="264dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="24dp"
+        android:shadowRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <EditText
+            android:id="@+id/kayitAdsoyad"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginBottom="216dp"
+            android:background="@drawable/textfield"
+            android:hint="@string/ad_soyad2"
+            android:textColorHighlight="@color/text"
+            android:textColorHint="@color/text"
+            android:textSize="18sp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:drawableStart="@drawable/ic_admin"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <EditText
+            android:id="@+id/kayiteposta"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginBottom="144dp"
+            android:background="@drawable/textfield"
+            android:text="@string/e_posta"
+            android:textSize="18sp"
+            android:textColor="@color/text"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:gravity="center_vertical"
+            android:drawableStart="@drawable/mail"
+            android:drawablePadding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/kayitsifre"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="144dp"
+            android:layout_marginBottom="72dp"
+            android:background="@drawable/textfield"
+            android:text="@string/ifre"
+            android:textColor="@color/text"
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center_vertical"
+            tools:ignore="MissingConstraints"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="8dp"
+            android:drawableEnd="@drawable/eyes"
+            />
+
+
+        <EditText
+            android:id="@+id/kayitsifretekrar"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:background="@drawable/textfield"
+            android:text="@string/sifre_tekrar"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:textColor="@color/text"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="8dp"
+            android:drawableEnd="@drawable/eyes"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/buttonKayitOl"
+        android:layout_width="327dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="444dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/buttonarkaplan"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/kay_t_ol"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical|center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/fieldBilgi2"
+        android:layout_width="327dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="516dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_driver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonGoogleGiris"
+        android:layout_width="327dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="562dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="sans-serif-medium"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:padding="8dp"
+        android:stateListAnimator="@null"
+        android:text="@string/google_ile_giri_yap"
+        android:textAlignment="center"
+        android:textColor="@color/button"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/KayitOlText"
+        android:layout_width="327dp"
+        android:layout_height="19dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="634dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/hesab_n_var_m"
+        android:textAlignment="center"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/kayitOlGirisLink"
+        android:layout_width="327dp"
+        android:layout_height="19dp"
+        android:layout_alignParentBottom="true"
+        android:onClick="goToLogin"
+        android:text="@string/giri_yap2"
+        android:textAlignment="textEnd"
+        android:textColor="@color/button"
+        android:textColorLink="@color/button"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="-17dp"
+        tools:layout_editor_absoluteY="634dp"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

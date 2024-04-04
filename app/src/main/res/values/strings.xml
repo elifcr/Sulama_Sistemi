@@ -14,5 +14,16 @@
     <string name="hemen_basla">Hemen Başla</string>
     <string name="lorem_ipsum_dolor_sit_amet_consectetur_eget_vitae_ut_tellus_mi_integer_tortor_cras_tellus_malesuada_sit_odio_sed_accumsan_urna_libero_lacus_eu_maecenas_lacus_lorem_neque_dui_risus_mattis_mi">Lorem ipsum dolor sit amet consectetur. Eget vitae ut tellus mi. Integer tortor cras tellus malesuada. Sit odio sed accumsan urna libero lacus eu maecenas lacus. Lorem neque dui risus mattis mi.</string>
     <string name="bah_enizi_y_netin">Bahçenizi Yönetin</string>
+    <string name="giri_yap">Giriş Yap</string>
+    <string name="google_ile_giri_yap">Google ile Giriş Yap</string>
+    <string name="ad_soyad">Ad Soyad</string>
+    <string name="e_posta">E-Posta</string>
+    <string name="giri_yap2">Giriş Yap</string>
+    <string name="hesab_n_var_m">Hesabın var mı?</string>
+    <string name="kay_t_ol">Kayıt Ol</string>
+    <string name="sifre_tekrar">Şifre (Tekrar)</string>
+    <string name="kayit_ol">Kayıt Ol</string>
+    <string name="ifre">Şifre</string>
+    <string name="ad_soyad2">Ad Soyad</string>
 
 </resources>
