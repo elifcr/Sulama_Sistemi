@@ -34,13 +34,14 @@
         android:paddingTop="32dp"
         android:paddingBottom="24dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="300dp">
+        tools:layout_editor_absoluteY="300dp"
+        tools:ignore="MissingConstraints">
 
         <EditText
             android:id="@+id/girisText"
             android:layout_width="136dp"
             android:layout_height="38dp"
-            android:text="Giriş Yap"
+            android:text="@string/giri_yap3"
             android:textColor="@color/black"
             android:textSize="32sp"
             tools:ignore="MissingConstraints"
@@ -111,7 +112,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonKayitOl"
+            android:id="@+id/buttonGirisYap"
             android:layout_width="327dp"
             android:layout_height="48dp"
             android:layout_marginStart="24dp"
@@ -120,11 +121,12 @@
             android:background="@drawable/buttonarkaplan"
             android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical|center_horizontal"
-            android:text="@string/kay_t_ol"
+            android:text="@string/giri_yap3"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:onClick="girisYap"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -182,16 +184,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/kayitOlGirisLink"
+            android:id="@+id/GirisKayitOlLink"
             android:layout_width="327dp"
             android:layout_height="19dp"
             android:layout_alignParentBottom="true"
             android:onClick="goToLogin"
-            android:text="Kayıt Ol"
-            android:textAlignment="textEnd"
+            android:text="@string/kay_t_ol"
             android:textColor="@color/button"
-            android:textColorLink="@color/button"
             android:textSize="16sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="-17dp"
@@ -202,4 +203,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
+</androidx.constraintlayout.widget.ConstraintLayout>

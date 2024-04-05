@@ -26,5 +26,6 @@
     <string name="ifre">Şifre</string>
     <string name="ad_soyad2">Ad Soyad</string>
     <string name="hesab_n_yok_mu">Hesabın yok mu?</string>
+    <string name="giri_yap3">Giriş Yap</string>
 
 </resources>
