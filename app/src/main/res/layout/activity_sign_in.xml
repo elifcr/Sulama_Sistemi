@@ -130,8 +130,9 @@
 
         <EditText
             android:id="@+id/kayitsifretekrar"
-            android:layout_width="327dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:background="@drawable/textfield"
             android:text="@string/sifre_tekrar"
             android:textSize="16sp"
