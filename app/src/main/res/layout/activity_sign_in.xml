@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="375dp"
-    android:layout_height="804dp"
-    android:background="@color/white"
-    tools:context=".SinginActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="24dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="24dp">
 
     <RelativeLayout
         android:id="@+id/frame_2"
@@ -21,8 +28,8 @@
 
         <TextView
             android:id="@+id/katiyOl"
-            android:layout_width="122dp"
-            android:layout_height="42dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:text="@string/kayit_ol"
             android:textSize="32sp"
@@ -36,8 +43,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="54dp"
             android:layout_marginBottom="0dp"
-            android:text="Lorem ipsum dolor sit amet consectetur.
-            Eget vitae ut tellus mi. "
+            android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_eget_vitae_ut_tellus_mi"
             android:textColor="@color/text"
             android:textSize="16sp" />
     </RelativeLayout>
@@ -57,9 +63,9 @@
 
         <EditText
             android:id="@+id/kayitAdsoyad"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginBottom="216dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:background="@drawable/textfield"
             android:hint="@string/ad_soyad2"
             android:textColorHighlight="@color/text"
@@ -70,34 +76,31 @@
             android:paddingEnd="20dp"
             android:paddingBottom="10dp"
             android:drawableStart="@drawable/ic_admin"
-            android:drawablePadding="8dp"
-            android:gravity="center_vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp" />
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/KayitText" />
 
         <EditText
-            android:id="@+id/kayiteposta"
-            android:layout_width="327dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="72dp"
-            android:layout_marginBottom="144dp"
+            android:id="@+id/kayitEposta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:background="@drawable/textfield"
-            android:text="@string/e_posta"
-            android:textSize="18sp"
-            android:textColor="@color/text"
-            android:paddingStart="20dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="20dp"
-            android:paddingBottom="10dp"
-            android:gravity="center_vertical"
             android:drawableStart="@drawable/mail"
             android:drawablePadding="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            android:gravity="center_vertical"
+            android:hint="@string/e_posta"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kayitAdsoyad" />
 
         <EditText
             android:id="@+id/kayitsifre"
@@ -157,6 +160,7 @@
         android:background="@drawable/buttonarkaplan"
         android:fontFamily="sans-serif-medium"
         android:text="@string/kay_t_ol"
+        android:textAllCaps="false"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -195,6 +199,7 @@
         android:padding="8dp"
         android:stateListAnimator="@null"
         android:text="@string/google_ile_giri_yap"
+        android:textAllCaps="false"
         android:textAlignment="center"
         android:textColor="@color/button"
         android:textSize="16sp"
@@ -238,5 +243,6 @@
         tools:layout_editor_absoluteY="634dp"
         tools:ignore="MissingConstraints" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

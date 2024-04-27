@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Sulama Sistemi</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -27,5 +27,6 @@
     <string name="ad_soyad2">Ad Soyad</string>
     <string name="hesab_n_yok_mu">Hesabın yok mu?</string>
     <string name="giri_yap3">Giriş Yap</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consectetur_eget_vitae_ut_tellus_mi">Lorem ipsum dolor sit amet consectetur. Eget vitae ut tellus mi.</string>
 
 </resources>
