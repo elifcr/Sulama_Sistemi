@@ -8,7 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.Util.SharedPRef
 import com.example.myapplication.databinding.ActivityWalkthroughBinding
-import com.example.myapplication.ui.login.LoginActivity
+import com.example.myapplication.Util.LoginActivity
 
 class WalkthroughActivity : AppCompatActivity() {
 
