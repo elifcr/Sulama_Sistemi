@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.HomePageActivity
 import com.example.myapplication.SignInActivity
 import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.ActivityLoginBinding
@@ -38,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 auth.signInWithEmailAndPassword(username, password)
                     .addOnSuccessListener {
-                        val intent = Intent(this, SplashActivity::class.java)
+                        val intent = Intent(this, HomePageActivity::class.java)
                         startActivity(intent)
                         finish()
                     }.addOnFailureListener {
