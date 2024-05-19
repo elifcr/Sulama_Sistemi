@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <TextView
             android:id="@+id/girisText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,6 +59,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/girisText" />
 
+
         <EditText
             android:id="@+id/girisSifre"
             android:layout_width="match_parent"
@@ -68,8 +69,8 @@
             android:layout_marginBottom="72dp"
             android:background="@drawable/textfield"
             android:drawableStart="@drawable/password"
-            android:drawableEnd="@drawable/eyes"
             android:drawablePadding="8dp"
+            android:drawableEnd="@drawable/eyes"
             android:gravity="center_vertical"
             android:hint="@string/ifre"
             android:textColorHint="@color/text"
@@ -77,6 +78,7 @@
             android:paddingVertical="8dp"
             android:textColor="@color/text"
             android:textSize="16sp"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/girisEposta" />
@@ -93,6 +95,30 @@
             android:shadowColor="@color/button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/girisSifre" />
+
+        <TextView
+            android:id="@+id/rememberMeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Beni Hatırla"
+            android:textColor="@color/text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/rememberMeCheckBox"
+            app:layout_constraintTop_toTopOf="@id/rememberMeCheckBox" />
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="Şifremi Unuttum"
+            android:textColor="@android:color/holo_blue_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.762"
+            app:layout_constraintStart_toEndOf="@id/rememberMeText"
+            app:layout_constraintTop_toTopOf="@id/rememberMeText" />
 
         <Button
             android:id="@+id/buttonGirisYap"

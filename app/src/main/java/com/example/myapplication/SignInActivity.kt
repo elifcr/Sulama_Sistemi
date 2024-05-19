@@ -1,15 +1,15 @@
 package com.example.myapplication
-import android.text.Editable
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.databinding.ActivitySignInBinding
 import com.example.myapplication.Util.LoginActivity
+import com.example.myapplication.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -24,6 +24,12 @@ class SignInActivity : AppCompatActivity() {
 
 
         auth = FirebaseAuth.getInstance()
+
+        binding.kayitGirisLink.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val kayitAdsoyad = findViewById<EditText>(R.id.kayitAdsoyad)
         val kayitEposta = findViewById<EditText>(R.id.kayitEposta)

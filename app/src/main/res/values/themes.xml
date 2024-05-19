@@ -8,5 +8,5 @@
 
     </style>
 
-    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+    <style name="Theme.MyApplication" parent="Theme.AppCompat.NoActionBar" />
 </resources>
