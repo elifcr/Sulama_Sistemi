@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_bg_shape"
-        android:visibility="visible">
+        android:visibility="visible"
+        tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/profile"
@@ -26,7 +27,7 @@
             android:paddingLeft="8dp"
             android:paddingTop="8dp"
             android:paddingRight="8dp"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="8dp" />
 
         <TextView
             android:id="@+id/kullanici_adi"
@@ -35,9 +36,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="12dp"
             android:layout_marginTop="45dp"
-            android:layout_marginEnd="@drawable/profile"
-            android:layout_toEndOf="@+id/profile"
-            android:text="Kullanıcı Adı "
+            android:layout_toEndOf="@id/profile"
+            android:text="Kullanıcı Adı"
             android:textColor="@color/white" />
 
         <Button
@@ -45,18 +45,66 @@
             android:layout_width="43dp"
             android:layout_height="44dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="33dp"
             android:layout_marginTop="33dp"
+            android:layout_marginEnd="33dp"
             android:background="@drawable/ic_notification"
             android:drawableTop="@drawable/ic_notification2"
             android:gravity="center"
             android:paddingLeft="8dp"
             android:paddingTop="8dp"
             android:paddingRight="8dp"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="8dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Weather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/Sulama_alanlari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Sulama Alanlarım"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="241dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/button_background"
+        android:text="    Alan Ekle +    "
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toEndOf="@id/Sulama_alanlari"
+        app:layout_constraintTop_toTopOf="@id/Sulama_alanlari" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/bahce_bilgi" />
 
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

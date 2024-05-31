@@ -1,15 +1,12 @@
 package com.example.myapplication
 
 import android.content.pm.PackageManager
-import android.location.LocationManager
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
@@ -35,6 +32,7 @@ class HomePageActivity : AppCompatActivity() {
         }else{
             getLocation()
         }
+
     }
     private fun getLocation(){
         if (ActivityCompat.checkSelfPermission(
