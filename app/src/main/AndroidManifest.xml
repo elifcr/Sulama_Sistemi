@@ -17,6 +17,18 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AreaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewPasswordActivity"
             android:exported="false" />
         <activity

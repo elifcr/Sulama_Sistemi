@@ -8,15 +8,55 @@
     android:background="@color/white"
     tools:context=".HomePageActivity">
 
-    <TextView
-        android:id="@+id/SulamaAlanıText"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/Home"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sulama Alanlarım"
-        android:textColor="@color/black"
-        android:textStyle="bold">
+        android:background="@drawable/ic_bg_shape"
+        android:visibility="visible">
 
-    </TextView>
+        <Button
+            android:id="@+id/profile"
+            android:layout_width="43dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="33dp"
+            android:background="@drawable/ic_notification"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/kullanici_adi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="@drawable/profile"
+            android:layout_toEndOf="@+id/profile"
+            android:text="Kullanıcı Adı "
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/notification"
+            android:layout_width="43dp"
+            android:layout_height="44dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginTop="33dp"
+            android:background="@drawable/ic_notification"
+            android:drawableTop="@drawable/ic_notification2"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"/>
+
+    </RelativeLayout>
+
 
 
 </ScrollView>
