@@ -44,5 +44,8 @@ class RestPasswordActivity : AppCompatActivity() {
                     }
             }
         }
+        binding.geriEposta.setOnClickListener {
+            onBackPressed()
+        }
     }
 }

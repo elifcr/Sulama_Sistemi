@@ -13,6 +13,8 @@ import com.example.myapplication.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
@@ -124,13 +126,42 @@ class SignInActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+                        val firebaseUser = auth.currentUser
+                        val user = hashMapOf(
+                            "username" to username
+                        )
+
+                        // Firestore örneği
+                        val db = FirebaseFirestore.getInstance()
+                        firebaseUser?.uid?.let { uid ->
+                            db.collection("users").document(uid)
+                                .set(user)
+                                .addOnSuccessListener {
+                                    // Firestore'a kullanıcı adını kaydettik
+                                }
+                                .addOnFailureListener {
+                                    // Firestore'a kullanıcı adını kaydedemedik
+                                }
+                        }
+
+                        // Realtime Database örneği
+                        val database = FirebaseDatabase.getInstance()
+                        val reference = database.getReference("users")
+                        firebaseUser?.uid?.let { uid ->
+                            reference.child(uid).setValue(user)
+                                .addOnSuccessListener {
+                                    // Realtime Database'e kullanıcı adını kaydettik
+                                }
+                                .addOnFailureListener {
+                                    // Realtime Database'e kullanıcı adını kaydedemedik
+                                }
+                        }
 
                         Toast.makeText(this, "Kayıt işlemi başarılı!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
-
                         val errorMessage = when (task.exception) {
                             is FirebaseAuthUserCollisionException -> "Bu e-posta adresi zaten kullanımda."
                             is FirebaseAuthInvalidCredentialsException -> "Geçersiz e-posta adresi veya şifre."

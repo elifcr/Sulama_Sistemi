@@ -11,7 +11,7 @@
     <RelativeLayout
         android:id="@+id/Home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="248dp"
         android:background="@drawable/ic_bg_shape"
         android:visibility="visible"
         tools:ignore="MissingConstraints">
@@ -20,7 +20,7 @@
             android:id="@+id/profile"
             android:layout_width="43dp"
             android:layout_height="44dp"
-            android:layout_marginStart="33dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="33dp"
             android:background="@drawable/ic_notification"
             android:gravity="center"
@@ -38,7 +38,8 @@
             android:layout_marginTop="45dp"
             android:layout_toEndOf="@id/profile"
             android:text="Kullanıcı Adı"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/notification"
@@ -46,7 +47,7 @@
             android:layout_height="44dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="33dp"
-            android:layout_marginEnd="33dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/ic_notification"
             android:drawableTop="@drawable/ic_notification2"
             android:gravity="center"
@@ -55,20 +56,86 @@
             android:paddingRight="8dp"
             android:paddingBottom="8dp" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/Weather"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profile"
+        <RelativeLayout
+            android:id="@+id/havaDurumu"
+            android:layout_width="393dp"
+            android:layout_height="131dp"
+            android:layout_below="@+id/profile"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            android:background="@drawable/weather_card"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textViewH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Balıkesir, 02 Haziran 2024"
+                android:textAlignment="gravity"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="normal" />
 
-        </androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textViewH"
+                app:layout_constraintTop_toTopOf="@id/textViewH"
+                app:srcCompat="@drawable/cloudy_sunny" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewH"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="8dp"
+                android:text="28°C"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView3"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="36dp"
+                android:text="Parçalı Bulutlu"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewH" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="8dp"
+                android:text="Nem Oranı: %57"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -77,19 +144,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="16dp"
         android:padding="16dp"
         android:text="Sulama Alanlarım"
         android:textColor="@color/black"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="241dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Home" />
 
     <Button
+        android:id="@+id/alanEkle"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_background"
         android:text="    Alan Ekle +    "
         android:textAlignment="center"
@@ -98,13 +166,59 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.897"
         app:layout_constraintStart_toEndOf="@id/Sulama_alanlari"
-        app:layout_constraintTop_toTopOf="@id/Sulama_alanlari" />
+        app:layout_constraintTop_toTopOf="@id/Sulama_alanlari"
+        />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@drawable/bahce_bilgi" />
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bahce_bilgi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Sulama_alanlari">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_image" />
 
+        <TextView
+            android:id="@+id/arkaBahce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="16dp"
+            android:text="Arka Bahçe"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/alan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginBottom="-1dp"
+            android:text="124m²"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
