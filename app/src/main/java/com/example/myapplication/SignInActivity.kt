@@ -137,10 +137,8 @@ class SignInActivity : AppCompatActivity() {
                             db.collection("users").document(uid)
                                 .set(user)
                                 .addOnSuccessListener {
-                                    // Firestore'a kullanıcı adını kaydettik
                                 }
                                 .addOnFailureListener {
-                                    // Firestore'a kullanıcı adını kaydedemedik
                                 }
                         }
 
@@ -150,10 +148,8 @@ class SignInActivity : AppCompatActivity() {
                         firebaseUser?.uid?.let { uid ->
                             reference.child(uid).setValue(user)
                                 .addOnSuccessListener {
-                                    // Realtime Database'e kullanıcı adını kaydettik
                                 }
                                 .addOnFailureListener {
-                                    // Realtime Database'e kullanıcı adını kaydedemedik
                                 }
                         }
 

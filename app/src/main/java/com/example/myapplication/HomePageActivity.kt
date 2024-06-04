@@ -105,11 +105,10 @@ class HomePageActivity : AppCompatActivity() {
                         val kullaniciAdiTextView = findViewById<TextView>(R.id.kullanici_adi)
                         kullaniciAdiTextView.text = username.toString()
                     } else {
-                        // Belge boş
+
                     }
                 }
                 .addOnFailureListener { exception ->
-                    // Firestore'dan veri alınamadı
                 }
         }
     }
@@ -137,10 +136,8 @@ class HomePageActivity : AppCompatActivity() {
                 if (location != null) {
                     val latitude = location.latitude
                     val longitude = location.longitude
-                    // Konum bilgileri başarıyla alındı, burada hava durumu verilerini alabilirsiniz
                     getWeatherData(latitude, longitude)
                 } else {
-                    // Konum bilgileri alınamadı
                     Toast.makeText(this, "Konum bilgisi bulunamadı.", Toast.LENGTH_LONG).show()
                 }
             }
@@ -199,7 +196,7 @@ class HomePageActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.textView4).text = description
             findViewById<TextView>(R.id.textView5).text = "Nem Oranı: %$humidity"
 
-            // Hava durumu ikonunu ayarlama
+            // Hava durumu resimleri
             val imageView = findViewById<ImageView>(R.id.imageView3)
             when (weatherObj.getString("main")) {
             }
