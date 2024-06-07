@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,52 +8,106 @@
     android:background="@color/white"
     tools:context=".AddAreaActivity">
 
-    <ImageView
-        android:id="@+id/geriArea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_left"
-        android:onClick="goToHomePage"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/BahceAdi"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/textfield"
-        android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:hint="Bahçe Adı"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        android:textColor="@color/text"
-        android:textColorHint="@color/text"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/geriArea"/>
+        android:background="@color/white"
+        android:padding="24dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="24dp">
 
-    <EditText
-        android:id="@+id/Alan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="72dp"
-        android:background="@drawable/textfield"
-        android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:hint="Alan"
-        android:textColorHint="@color/text"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        android:textColor="@color/text"
-        android:textSize="16sp"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/BahceAdi" />
+        <ImageView
+            android:id="@+id/geriArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goToHomePage"
+            android:src="@drawable/ic_left"
+            tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/bahceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif"
+            android:text="Bahçe Alanınızı Ekleyin"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/geriArea" />
+
+        <TextView
+            android:id="@+id/bahceText2"
+            android:layout_width="327dp"
+            android:layout_height="38dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:text="Bahçe sulama sisteminizi kullanmak için önce alan ekleyiniz."
+            android:textColor="@color/text"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bahceText" />
+
+        <EditText
+            android:id="@+id/BahceAdi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/textfield"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="Bahçe Adı"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bahceText2" />
+
+        <EditText
+            android:id="@+id/Alan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="72dp"
+            android:background="@drawable/textfield"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="Alan"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/BahceAdi" />
+
+        <Button
+            android:id="@+id/buttonGirisYap"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/buttonarkaplan"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Bahçe Alanı Ekle"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Alan" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

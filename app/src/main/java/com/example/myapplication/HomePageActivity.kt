@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.Settings
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -44,10 +45,10 @@ class HomePageActivity : AppCompatActivity() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        if(ContextCompat.checkSelfPermission(
+        if (ContextCompat.checkSelfPermission(
                 this, android.Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
-        ){
+        ) {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
@@ -109,6 +110,30 @@ class HomePageActivity : AppCompatActivity() {
                     }
                 }
                 .addOnFailureListener { exception ->
+                }
+        }
+        firebaseUser?.uid?.let { uid ->
+            db.collection("users").document(uid)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        val bahceAdi = document.getString("bahceAdi")
+                        val alan = document.getString("alan")
+
+                        val relativeLayout = findViewById<RelativeLayout>(R.id.relativeLayout)
+                        val bahceAdiTextView = findViewById<TextView>(R.id.arkaBahce)
+                        val alanTextView = findViewById<TextView>(R.id.alan)
+
+                        relativeLayout.visibility = View.VISIBLE
+                        bahceAdiTextView.text = bahceAdi
+                        alanTextView.text = alan
+                    } else {
+                        val relativeLayout = findViewById<RelativeLayout>(R.id.relativeLayout)
+                        relativeLayout.visibility = View.GONE
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(this, "Hata: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
         }
     }

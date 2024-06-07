@@ -177,7 +177,7 @@
             android:includeFontPadding="false"
             android:padding="8dp"
             android:stateListAnimator="@null"
-            android:text="@string/google_ile_giri_yap"
+            android:text="Google ile Kayıt Ol"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/button"
