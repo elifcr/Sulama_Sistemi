@@ -10,5 +10,6 @@
     <color name="text">#979C9E</color>
     <color name="description">#72777A</color>
     <color name="weatherCard">#20FFFFFF</color>
+    <color name="red">#FF0000</color>
 
 </resources>

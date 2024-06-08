@@ -1,14 +1,13 @@
-@file:Suppress("DEPRECATION")
-
 package com.example.myapplication
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -17,12 +16,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
@@ -30,28 +34,42 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-
 class HomePageActivity : AppCompatActivity() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var auth: FirebaseAuth
-    val API: String = "2b559f2681dfd958736e2f48d4fca3b8"
+    private val API: String = "2b559f2681dfd958736e2f48d4fca3b8"
 
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home_page)
+
+        val switchButton = findViewById<SwitchCompat>(R.id.switchButton)
+
+        switchButton.setOnCheckedChangeListener { _, isChecked ->
+            val context = this@HomePageActivity
+
+            if (isChecked) {
+                switchButton.text = "Açık"
+            } else {
+                switchButton.text = "Kapalı"
+            }
+        }
+
+
         auth = FirebaseAuth.getInstance()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         if (ContextCompat.checkSelfPermission(
-                this, android.Manifest.permission.ACCESS_FINE_LOCATION
+                this, Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(
                 this,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 REQUEST_LOCATION_PERMISSION
             )
         } else {
@@ -60,40 +78,34 @@ class HomePageActivity : AppCompatActivity() {
 
         val alanEkleButton = findViewById<Button>(R.id.alanEkle)
         alanEkleButton.setOnClickListener {
-            val intent = Intent(
-                this@HomePageActivity,
-                AddAreaActivity::class.java
-            )
-            startActivity(intent)
+            startActivity(Intent(this@HomePageActivity, AddAreaActivity::class.java))
         }
 
         val profileButton = findViewById<Button>(R.id.profile)
         profileButton.setOnClickListener {
-            val intent = Intent(
-                this@HomePageActivity,
-                ProfileActivity::class.java
-            )
-            startActivity(intent)
+            startActivity(Intent(this@HomePageActivity, ProfileActivity::class.java))
         }
 
         val notificationButton = findViewById<Button>(R.id.notification)
         notificationButton.setOnClickListener {
-            val intent = Intent(
-                this@HomePageActivity,
-                NotificationActivity::class.java
-            )
-            startActivity(intent)
+            startActivity(Intent(this@HomePageActivity, NotificationActivity::class.java))
         }
 
         val relativeLayout = findViewById<RelativeLayout>(R.id.relativeLayout)
         relativeLayout.setOnClickListener {
-            val intent = Intent(
-                this@HomePageActivity,
-                AreaActivity::class.java
-            )
-            startActivity(intent)
+            startActivity(Intent(this@HomePageActivity, AreaActivity::class.java))
         }
 
+        fetchUserData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("HomePageActivity", "onResume çağrıldı")
+        fetchBahceData()
+    }
+
+    private fun fetchUserData() {
         val firebaseUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
         firebaseUser?.uid?.let { uid ->
@@ -103,33 +115,37 @@ class HomePageActivity : AppCompatActivity() {
                     if (document != null) {
                         val user = document.data
                         val username = user?.get("username")
-                        val kullaniciAdiTextView = findViewById<TextView>(R.id.kullanici_adi)
-                        kullaniciAdiTextView.text = username.toString()
-                    } else {
-
+                        findViewById<TextView>(R.id.kullanici_adi).text = username.toString()
                     }
                 }
                 .addOnFailureListener { exception ->
+                    Toast.makeText(this, "Error: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+
+    private fun fetchBahceData() {
+        val firebaseUser = auth.currentUser
+        val db = FirebaseFirestore.getInstance()
         firebaseUser?.uid?.let { uid ->
-            db.collection("users").document(uid)
+            db.collection("bahce")
+                .whereEqualTo("userId", uid)
                 .get()
-                .addOnSuccessListener { document ->
-                    if (document.exists()) {
-                        val bahceAdi = document.getString("bahceAdi")
-                        val alan = document.getString("alan")
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        for (document in documents) {
+                            val bahceAdi = document.getString("bahceAdi")
+                            val alan = document.getString("alan")
+                            val relativeLayout = findViewById<RelativeLayout>(R.id.relativeLayout)
+                            val bahceAdiTextView = findViewById<TextView>(R.id.arkaBahce)
+                            val alanTextView = findViewById<TextView>(R.id.alan)
 
-                        val relativeLayout = findViewById<RelativeLayout>(R.id.relativeLayout)
-                        val bahceAdiTextView = findViewById<TextView>(R.id.arkaBahce)
-                        val alanTextView = findViewById<TextView>(R.id.alan)
-
-                        relativeLayout.visibility = View.VISIBLE
-                        bahceAdiTextView.text = bahceAdi
-                        alanTextView.text = alan
+                            relativeLayout.visibility = View.VISIBLE
+                            bahceAdiTextView.text = bahceAdi
+                            alanTextView.text = alan
+                        }
                     } else {
-                        val relativeLayout = findViewById<RelativeLayout>(R.id.relativeLayout)
-                        relativeLayout.visibility = View.GONE
+                        findViewById<RelativeLayout>(R.id.relativeLayout).visibility = View.GONE
                     }
                 }
                 .addOnFailureListener { exception ->
@@ -147,13 +163,6 @@ class HomePageActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return
         }
         fusedLocationClient.lastLocation
@@ -171,39 +180,31 @@ class HomePageActivity : AppCompatActivity() {
     private fun getWeatherData(latitude: Double, longitude: Double) {
         val urlString = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&lang=tr&appid=$API"
 
-        val request = object : AsyncTask<Void, Void, String>() {
-            override fun doInBackground(vararg params: Void?): String? {
-                return try {
-                    val url = URL(urlString)
-                    val urlConnection = url.openConnection() as HttpURLConnection
-                    urlConnection.requestMethod = "GET"
-                    urlConnection.connect()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val url = URL(urlString)
+                val urlConnection = url.openConnection() as HttpURLConnection
+                urlConnection.requestMethod = "GET"
+                urlConnection.connect()
 
-                    val inputStream = urlConnection.inputStream
-                    inputStream.bufferedReader().use {
-                        it.readText()
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    null
-                }
-            }
+                val inputStream = urlConnection.inputStream
+                val result = inputStream.bufferedReader().use { it.readText() }
 
-            override fun onPostExecute(result: String?) {
-                super.onPostExecute(result)
-                if (result != null) {
+                withContext(Dispatchers.Main) {
                     parseWeatherData(result)
-                } else {
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                withContext(Dispatchers.Main) {
                     Toast.makeText(this@HomePageActivity, "Hava durumu verileri alınamadı.", Toast.LENGTH_LONG).show()
                 }
             }
         }
-        request.execute()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun parseWeatherData(json: String) {
         try {
-
             val jsonObj = JSONObject(json)
             val main = jsonObj.getJSONObject("main")
             val temp = main.getString("temp")
@@ -221,9 +222,9 @@ class HomePageActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.textView4).text = description
             findViewById<TextView>(R.id.textView5).text = "Nem Oranı: %$humidity"
 
-            // Hava durumu resimleri
             val imageView = findViewById<ImageView>(R.id.imageView3)
             when (weatherObj.getString("main")) {
+                // Hava durumu koşullarına göre imageView güncelleme mantığı ekleyin
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -231,9 +232,7 @@ class HomePageActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_LOCATION_PERMISSION) {
@@ -250,21 +249,6 @@ class HomePageActivity : AppCompatActivity() {
     }
 
 
-    private fun requestLocationPermission() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                REQUEST_LOCATION_PERMISSION
-            )
-        } else {
-            getLocation()
-        }
-    }
     companion object {
         private const val REQUEST_LOCATION_PERMISSION = 1
     }

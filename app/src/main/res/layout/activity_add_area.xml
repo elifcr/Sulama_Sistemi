@@ -34,7 +34,8 @@
             android:textColor="@color/black"
             android:textSize="32sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/geriArea" />
+            app:layout_constraintTop_toBottomOf="@id/geriArea"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/bahceText2"
@@ -89,6 +90,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/BahceAdi" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:hint="İl Adı"
+            app:hintTextColor="@color/text"
+            app:errorTextColor="@color/text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Alan">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoComplete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:inputType="none"
+                android:paddingVertical="8dp"
+                android:background="@drawable/textfield"
+                android:hint="İl Adı"
+                android:textColorHint="@color/text"
+                android:textColor="@color/text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/buttonGirisYap"
             android:layout_width="match_parent"
@@ -106,7 +134,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Alan" />
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
