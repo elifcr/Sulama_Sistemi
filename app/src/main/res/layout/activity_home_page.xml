@@ -41,21 +41,6 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/notification"
-            android:layout_width="43dp"
-            android:layout_height="44dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="33dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_notification"
-            android:drawableTop="@drawable/ic_notification2"
-            android:gravity="center"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="8dp" />
-
         <RelativeLayout
             android:id="@+id/havaDurumu"
             android:layout_width="393dp"

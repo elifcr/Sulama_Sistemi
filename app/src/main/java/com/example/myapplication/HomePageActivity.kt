@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -39,6 +40,9 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var auth: FirebaseAuth
     private val API: String = "2b559f2681dfd958736e2f48d4fca3b8"
+    private lateinit var switchButton: SwitchCompat
+    private lateinit var sharedPreferences: SharedPreferences
+    private var isSwitchChecked = false
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,18 +50,26 @@ class HomePageActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_home_page)
 
-        val switchButton = findViewById<SwitchCompat>(R.id.switchButton)
+        switchButton = findViewById(R.id.switchButton)
+
+        sharedPreferences = getSharedPreferences("com.example.myapplication", MODE_PRIVATE)
+        isSwitchChecked = sharedPreferences.getBoolean("isSwitchChecked", false)
+        switchButton.isChecked = isSwitchChecked
+        updateSwitchText()
 
         switchButton.setOnCheckedChangeListener { _, isChecked ->
-            val context = this@HomePageActivity
-
-            if (isChecked) {
-                switchButton.text = "Açık"
-            } else {
-                switchButton.text = "Kapalı"
-            }
+            isSwitchChecked = isChecked
+            updateSwitchText()
+            savePreferences()
         }
 
+        sharedPreferences.registerOnSharedPreferenceChangeListener { _, key ->
+            if (key == "isSwitchChecked") {
+                isSwitchChecked = sharedPreferences.getBoolean(key, false)
+                switchButton.isChecked = isSwitchChecked
+                updateSwitchText()
+            }
+        }
 
         auth = FirebaseAuth.getInstance()
 
@@ -86,22 +98,35 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(Intent(this@HomePageActivity, ProfileActivity::class.java))
         }
 
-        val notificationButton = findViewById<Button>(R.id.notification)
-        notificationButton.setOnClickListener {
-            startActivity(Intent(this@HomePageActivity, NotificationActivity::class.java))
-        }
-
         val relativeLayout = findViewById<RelativeLayout>(R.id.relativeLayout)
         relativeLayout.setOnClickListener {
             startActivity(Intent(this@HomePageActivity, AreaActivity::class.java))
         }
 
+
         fetchUserData()
+    }
+
+    private fun updateSwitchText() {
+        if (isSwitchChecked) {
+            switchButton.text = "Açık"
+        } else {
+            switchButton.text = "Kapalı"
+        }
+    }
+
+    private fun savePreferences() {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isSwitchChecked", isSwitchChecked)
+        editor.apply()
     }
 
     override fun onResume() {
         super.onResume()
         Log.d("HomePageActivity", "onResume çağrıldı")
+        isSwitchChecked = sharedPreferences.getBoolean("isSwitchChecked", false)
+        switchButton.isChecked = isSwitchChecked
+        updateSwitchText()
         fetchBahceData()
     }
 
@@ -247,7 +272,6 @@ class HomePageActivity : AppCompatActivity() {
             }
         }
     }
-
 
     companion object {
         private const val REQUEST_LOCATION_PERMISSION = 1

@@ -34,41 +34,6 @@
             app:layout_constraintTop_toBottomOf="@id/geriArea" />
 
 
-        <RelativeLayout
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/src">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Sulama Süresi"
-                android:textColor="@color/black"
-                android:textSize="32dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/timerTextView"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_below="@+id/textView6"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/textfield"
-                android:drawablePadding="8dp"
-                android:gravity="center|left"
-                android:paddingHorizontal="16dp"
-                android:text="00:00:00"
-                android:textColor="@color/girisYap"
-                android:textSize="24dp" />
-
-        </RelativeLayout>
-
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchButton"
             android:layout_width="wrap_content"
@@ -78,7 +43,7 @@
             android:text="Bahçe Durumu    "
             android:textColor="@color/text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/time"
+            app:layout_constraintTop_toBottomOf="@id/src"
             app:thumbTint="@color/button"
             app:trackTint="@color/background" />
 
@@ -100,7 +65,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switchButton" />
-
 
         <TextView
             android:layout_width="wrap_content"

@@ -55,6 +55,7 @@ dependencies {
     implementation ("com.caverock:androidsvg:1.4")
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.database.ktx)
+    implementation(libs.firebase.messaging.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
