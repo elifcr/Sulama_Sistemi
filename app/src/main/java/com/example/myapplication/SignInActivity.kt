@@ -24,7 +24,6 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         auth = FirebaseAuth.getInstance()
 
         binding.kayitGirisLink.setOnClickListener {
@@ -131,7 +130,6 @@ class SignInActivity : AppCompatActivity() {
                             "username" to username
                         )
 
-                        // Firestore örneği
                         val db = FirebaseFirestore.getInstance()
                         firebaseUser?.uid?.let { uid ->
                             db.collection("users").document(uid)
@@ -142,7 +140,6 @@ class SignInActivity : AppCompatActivity() {
                                 }
                         }
 
-                        // Realtime Database örneği
                         val database = FirebaseDatabase.getInstance()
                         val reference = database.getReference("users")
                         firebaseUser?.uid?.let { uid ->

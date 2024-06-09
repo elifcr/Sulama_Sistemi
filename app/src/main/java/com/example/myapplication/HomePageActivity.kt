@@ -103,10 +103,8 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(Intent(this@HomePageActivity, AreaActivity::class.java))
         }
 
-
         fetchUserData()
     }
-
     private fun updateSwitchText() {
         if (isSwitchChecked) {
             switchButton.text = "Açık"
@@ -114,13 +112,11 @@ class HomePageActivity : AppCompatActivity() {
             switchButton.text = "Kapalı"
         }
     }
-
     private fun savePreferences() {
         val editor = sharedPreferences.edit()
         editor.putBoolean("isSwitchChecked", isSwitchChecked)
         editor.apply()
     }
-
     override fun onResume() {
         super.onResume()
         Log.d("HomePageActivity", "onResume çağrıldı")
@@ -129,7 +125,6 @@ class HomePageActivity : AppCompatActivity() {
         updateSwitchText()
         fetchBahceData()
     }
-
     private fun fetchUserData() {
         val firebaseUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
@@ -148,7 +143,6 @@ class HomePageActivity : AppCompatActivity() {
                 }
         }
     }
-
     private fun fetchBahceData() {
         val firebaseUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
@@ -178,7 +172,6 @@ class HomePageActivity : AppCompatActivity() {
                 }
         }
     }
-
     private fun getLocation() {
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -226,7 +219,6 @@ class HomePageActivity : AppCompatActivity() {
             }
         }
     }
-
     @SuppressLint("SetTextI18n")
     private fun parseWeatherData(json: String) {
         try {
@@ -248,9 +240,6 @@ class HomePageActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.textView5).text = "Nem Oranı: %$humidity"
 
             val imageView = findViewById<ImageView>(R.id.imageView3)
-            when (weatherObj.getString("main")) {
-                // Hava durumu koşullarına göre imageView güncelleme mantığı ekleyin
-            }
         } catch (e: Exception) {
             e.printStackTrace()
         }

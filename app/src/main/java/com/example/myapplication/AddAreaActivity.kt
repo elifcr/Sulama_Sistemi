@@ -23,7 +23,6 @@ class AddAreaActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_add_area)
 
-
         val cities = listOf(
             "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Amasya", "Ankara", "Antalya", "Artvin",
             "Aydın", "Balıkesir", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale",
